@@ -1,0 +1,14 @@
+
+INVOICE
+
+Invoice Number: INV-2026-104
+Vendor: ACME Technologies
+Invoice Date: 2026-10-12
+Due Date: 2026-10-30
+
+Description: Software development services
+Quantity: 1
+Amount: 2500 INR
+
+Total Amount: 2500 INR
+Currency: INR

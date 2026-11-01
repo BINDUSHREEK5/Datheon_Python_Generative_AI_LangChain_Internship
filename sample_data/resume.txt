@@ -1,0 +1,21 @@
+
+JANE DOE
+Email: jane.doe@example.com
+Phone: +1-555-0100
+
+Skills: Python, SQL, FastAPI
+
+Education:
+Bachelor of Computer Science, Example University
+2022 - 2026
+
+Work Experience:
+Software Engineering Intern, Example Tech
+June 2025 - August 2025
+- Built API endpoints using Python.
+- Wrote SQL queries for reporting.
+
+Projects:
+Campus Assistant
+Description: A web app for campus information.
+Technologies: Python, FastAPI, SQL
