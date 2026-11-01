@@ -26,24 +26,24 @@ A Python-based LLM application that extracts structured information from invoice
 ## Project Structure
 
 ```text
-Datheon-Task1/
+Datheon_Python_Generative_AI_LangChain_Internship/
 │
-├── main.py
-├── extractor.py
-├── prompt_templates.py
-├── schemas.py
-├── requirements.txt
-├── .env.example
-├── .gitignore
-│
-├── sample_data/
-│   ├── invoice.txt
-│   └── resume.txt
-│
-├── tests/
-│   └── test_extractor.py
-│
-└── README.md
+└── Task1-Structured-LLM-JSON-Extractor/
+    │
+    ├── main.py
+    ├── extractor.py
+    ├── prompt_templates.py
+    ├── schemas.py
+    ├── requirements.txt
+    ├── .env.example
+    ├── README.md
+    │
+    ├── sample_data/
+    │   ├── invoice.txt
+    │   └── resume.txt
+    │
+    └── tests/
+        └── test_extractor.py
 ```
 
 ## Prerequisites
@@ -57,8 +57,8 @@ Datheon-Task1/
 ### 1. Clone the repository
 
 ```bash
-git clone YOUR_GITHUB_REPOSITORY_URL
-cd Datheon-Task1
+git clone https://github.com/BINDUSHREEK5/Datheon_Python_Generative_AI_LangChain_Internship.git
+cd Datheon_Python_Generative_AI_LangChain_Internship/Task1-Structured-LLM-JSON-Extractor
 ```
 
 ### 2. Create and activate a virtual environment
@@ -158,3 +158,55 @@ The tests use mocked Gemini responses, so automated testing does not require liv
 - Currently supports text-based input files (`.txt`), not direct PDF or image extraction.
 - Extraction quality depends on the source text, Gemini model, and API availability.
 - LLM-generated information should always be reviewed before being used for business or hiring decisions.
+
+## Sample Input and Output
+
+This section demonstrates how the application extracts structured information from invoice and resume text.
+
+### 1. Invoice Extraction
+
+**Sample Input:**
+
+The application accepts invoice text like the following. The complete sample is available in `sample_data/invoice.txt`.
+
+```text
+Invoice Number: INV-104
+Vendor: ACME Technologies
+Invoice Date: 2026-10-12
+Due Date: 2026-10-30
+Total Amount: 2500 INR
+```
+
+**Sample Output:**
+
+The extracted information is returned as structured JSON and validated using the Pydantic invoice schema.
+
+```json
+{
+  "invoice_number": "INV-104",
+  "vendor": "ACME Technologies",
+  "invoice_date": "2026-10-12",
+  "due_date": "2026-10-30",
+  "total_amount": "2500",
+  "currency": "INR"
+}
+```
+
+### 2. Resume Extraction
+
+**Sample Input:**
+
+The application also accepts resume text. See `sample_data/resume.txt` for the complete sample resume.
+
+**Sample Output:**
+
+The resume information is extracted into structured JSON and validated using the Pydantic resume schema.
+
+To generate the actual output, run:
+
+```powershell
+python main.py --type resume --file sample_data/resume.txt --output output/resume.json
+```
+
+The generated JSON contains the extracted resume fields defined in the Pydantic schema.
+
