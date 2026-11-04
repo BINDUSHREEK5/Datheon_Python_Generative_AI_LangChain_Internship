@@ -1,0 +1,3 @@
+﻿Datheon is a technology company that focuses on data, AI, and automation.
+The internship program trains students to work with Python, Generative AI,
+vector databases, and large-language-model workflows.
