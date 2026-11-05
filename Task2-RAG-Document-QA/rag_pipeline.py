@@ -88,7 +88,6 @@ class RAGPipeline:
             persist_directory=self.persist_directory,
             collection_name=self.collection_name,
         )
-        self.vectorstore.persist()
         return self.vectorstore
 
     def retrieve(self, question: str, k: int = 5, vectorstore=None):

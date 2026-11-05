@@ -4,15 +4,15 @@ This project is a beginner-friendly Retrieval-Augmented Generation (RAG) applica
 
 ## Project overview
 
-The application loads PDF and TXT files, splits them into chunks, converts each chunk into embeddings using a sentence-transformer model, stores the vectors in ChromaDB, and then uses Gemini to answer user questions grounded in the retrieved document snippets. The interface is implemented with Streamlit so users can upload documents and ask follow-up questions without writing code.
+The application loads PDF and TXT files, splits them into chunks, converts each chunk into embeddings using FastEmbedEmbeddings, stores the vectors in ChromaDB, and then uses Gemini to answer user questions grounded in the retrieved document snippets. The interface is implemented with Streamlit so users can upload documents and ask follow-up questions without writing code.
 
 ## RAG architecture and workflow
 
 1. Upload documents in PDF or TXT format.
 2. The document loader reads each file and preserves metadata such as source filename and PDF page numbers.
 3. `RecursiveCharacterTextSplitter` breaks long documents into smaller sections.
-4. The sentence-transformer embedding model creates vectors for each chunk.
-5. ChromaDB stores the chunks and embeddings in a separate collection for each processing session.
+4. FastEmbedEmbeddings creates vectors for each chunk.
+5. ChromaDB stores the chunks and embeddings in a session-specific local persist directory, and stale data is cleared before a new upload batch is indexed.
 6. A similarity search retrieves the chunks most relevant to the user question.
 7. Gemini receives only the retrieved snippets as context.
 8. The answer is displayed with source citations, and the system explicitly states when the uploaded documents do not contain enough information.
@@ -103,7 +103,7 @@ pytest
 
 ## Project limitations
 
-- The app depends on internet access for the Gemini API call and the HuggingFace embedding model download the first time it is used.
-- ChromaDB stores vector data locally on disk in the temporary directory for each processing session.
+- The app depends on internet access for the Gemini API call and the FastEmbed model download the first time it is used.
+- ChromaDB stores vector data locally on disk in a temporary session directory under the system temp folder, and the app removes any stale persisted data before indexing a new upload batch.
 - Large documents may require more memory and processing time depending on your computer.
 - The application is designed for document-grounded answers only; it intentionally refuses to answer questions outside the uploaded content.
