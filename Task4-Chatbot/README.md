@@ -1,6 +1,6 @@
 # Datheon AI Chatbot
 
-This project is a beginner-friendly chatbot built with Streamlit and the existing Task 2 RAG pipeline. It reuses the working Task 2 document loader, chunking, embedding, retrieval, and citation logic, then adds a conversational interface with message history and streaming responses.
+This project is a beginner-friendly chatbot built with Streamlit and the existing Task 2 RAG pipeline. It reuses the working Task 2 document loader, chunking, embedding, retrieval, and citation logic, then adds a conversational interface with message history and streaming responses. It also uses the existing Task 2 Python virtual environment rather than creating a separate Task 4 environment.
 
 ## Project overview
 
@@ -29,28 +29,15 @@ The chatbot lets a user upload PDF and TXT files, index the documents with the e
 ## Installation for Windows
 
 1. Open PowerShell in `Task4-Chatbot`.
-2. Create and activate a virtual environment:
+2. Activate the existing Task 2 virtual environment:
 
 ```powershell
-python -m venv .venv
-.\.venv\Scripts\Activate.ps1
-```
-
-3. Install the project dependencies:
-
-```powershell
-python -m pip install --upgrade pip
-python -m pip install -r requirements.txt
+..\Task2-RAG-Document-QA\.venv\Scripts\Activate.ps1
 ```
 
 ## Environment variables
 
-Create a `.env` file in the Task 4 project root using the example below:
-
-```env
-GEMINI_API_KEY=your_api_key_here
-GEMINI_MODEL=gemini-2.0-flash
-```
+The app loads the Gemini API key and model configuration from `Task2-RAG-Document-QA/.env`. Configure `GEMINI_API_KEY` and, optionally, `GEMINI_MODEL` in that existing file. Task 4 does not use a separate `.env` file.
 
 If `GEMINI_API_KEY` is missing, the app will show an error before answering.
 
@@ -59,11 +46,11 @@ If `GEMINI_API_KEY` is missing, the app will show an error before answering.
 From the project folder:
 
 ```powershell
-.\.venv\Scripts\Activate.ps1
-streamlit run app.py
+..\Task2-RAG-Document-QA\.venv\Scripts\Activate.ps1
+python -m streamlit run app.py
 ```
 
-Then open the local Streamlit URL in a browser.
+Then open the local Streamlit URL in a browser. The sidebar includes a Light/Dark theme selector.
 
 ## Example chat flow
 
@@ -80,8 +67,8 @@ What are the main themes discussed in the uploaded document?
 ## How to run tests
 
 ```powershell
-.\.venv\Scripts\Activate.ps1
-pytest -q
+..\Task2-RAG-Document-QA\.venv\Scripts\Activate.ps1
+python -m pytest -q
 ```
 
 ## Project limitations
