@@ -16,15 +16,20 @@ Rules:
 
 Required JSON structure:
 {
-  "candidate_name": null,
-  "email": null,
-  "phone": null,
-  "skills": [],
-  "education": [],
-  "work_experience": [],
-  "projects": []
+  "invoice_number": null,
+  "vendor": null,
+  "invoice_date": null,
+  "due_date": null,
+  "total_amount": null,
+  "currency": null,
+  "line_items": [
+    {
+      "description": null,
+      "quantity": null,
+      "amount": null
+    }
+  ]
 }
-
 Invoice text:
 ---
 {invoice_text}
